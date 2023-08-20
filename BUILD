@@ -23,7 +23,7 @@ swift_binary(
     srcs = ["//Source:SourceKittenLibSources"],
     deps = [
         ":SourceKittenFramework",
-        "@sourcekitten_com_github_apple_swift_argument_parser//:ArgumentParser"
+        "@sourcekitten_com_github_apple_swift_argument_parser//:StackOtterArgParser"
     ],
     defines = ["SWIFT_PACKAGE"],
     visibility = ["//visibility:public"]

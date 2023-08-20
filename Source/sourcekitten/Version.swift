@@ -1,14 +1,14 @@
-import ArgumentParser
 import SourceKittenFramework
+import StackOtterArgParser
 
 extension SourceKitten {
-    struct Version: ParsableCommand {
-        static let configuration = CommandConfiguration(abstract: "Display the current version of SourceKitten")
+  struct Version: ParsableCommand {
+    static let configuration = CommandConfiguration(abstract: "Display the current version of SourceKitten")
 
-        static var value: String { SourceKittenFramework.Version.current.value }
+    static var value: String { SourceKittenFramework.Version.current.value }
 
-        mutating func run() throws {
-            print(Self.value)
-        }
+    mutating func run() throws {
+      print(Self.value)
     }
+  }
 }

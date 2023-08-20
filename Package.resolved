@@ -1,12 +1,12 @@
 {
   "pins" : [
     {
-      "identity" : "swift-argument-parser",
+      "identity" : "swift-arg-parser",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-argument-parser.git",
+      "location" : "https://github.com/Wabi-Studios/swift-arg-parser.git",
       "state" : {
-        "revision" : "4ad606ba5d7673ea60679a61ff867cc1ff8c8e86",
-        "version" : "1.2.1"
+        "revision" : "b3fd0205d8a11f3bd97c3162864b737257509cd5",
+        "version" : "1.2.4"
       }
     },
     {
@@ -21,10 +21,10 @@
     {
       "identity" : "yams",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/jpsim/Yams.git",
+      "location" : "https://github.com/Wabi-Studios/Yams.git",
       "state" : {
-        "revision" : "f47ba4838c30dbd59998a4e4c87ab620ff959e8a",
-        "version" : "5.0.5"
+        "revision" : "4c3056849bb80672bec5b02da9d50ca2bd7ba723",
+        "version" : "5.0.7"
       }
     }
   ],

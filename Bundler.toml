@@ -1,0 +1,10 @@
+format_version = 2
+
+[apps.sourcekitten]
+category = 'public.app-category.developer-tools'
+identifier = 'foundation.wabi.sourcekitten'
+product = 'sourcekitten'
+version = '1.0.0'
+
+[apps.sourcekitten.plist]
+commit = '$(COMMIT_HASH)'

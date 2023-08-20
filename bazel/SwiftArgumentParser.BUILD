@@ -1,17 +1,17 @@
 load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
 
 swift_library(
-    name = "ArgumentParserToolInfo",
-    srcs = glob(["Sources/ArgumentParserToolInfo/**/*.swift"]),
-    module_name = "ArgumentParserToolInfo",
+    name = "StackOtterArgParserToolInfo",
+    srcs = glob(["Sources/StackOtterArgParserToolInfo/**/*.swift"]),
+    module_name = "StackOtterArgParserToolInfo",
 )
 
 swift_library(
-    name = "ArgumentParser",
-    srcs = glob(["Sources/ArgumentParser/**/*.swift"]),
-    module_name = "ArgumentParser",
+    name = "StackOtterArgParser",
+    srcs = glob(["Sources/StackOtterArgParser/**/*.swift"]),
+    module_name = "StackOtterArgParser",
     visibility = ["//visibility:public"],
     deps = [
-        ":ArgumentParserToolInfo",
+        ":StackOtterArgParserToolInfo",
     ],
 )

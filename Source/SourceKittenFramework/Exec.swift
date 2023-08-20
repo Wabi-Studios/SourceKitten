@@ -57,6 +57,7 @@ enum Exec {
                      _ arguments: [String] = [],
                      currentDirectory: String = FileManager.default.currentDirectoryPath,
                      stderr: Stderr = .inherit) -> Results {
+#if !os(iOS) && !os(xrOS) 
         let process = Process()
         process.arguments = arguments
 
@@ -64,18 +65,19 @@ enum Exec {
         process.standardOutput = pipe
 
         switch stderr {
-        case .discard:
-            // FileHandle.nullDevice does not work here, as it consists of an invalid file descriptor,
-            // causing process.launch() to abort with an EBADF.
-            process.standardError = FileHandle(forWritingAtPath: "/dev/null")!
-        case .merge:
-            process.standardError = pipe
-        case .inherit:
-            break
+          case .discard:
+              // FileHandle.nullDevice does not work here, as it consists of an invalid file descriptor,
+              // causing process.launch() to abort with an EBADF.
+              process.standardError = FileHandle(forWritingAtPath: "/dev/null")!
+          case .merge:
+              process.standardError = pipe
+          case .inherit:
+              break
         }
+#endif /* !os(iOS) && !os(xrOS) */
 
         do {
-#if canImport(Darwin)
+#if canImport(Darwin) && !os(iOS) && !os(xrOS)
             if #available(macOS 10.13, *) {
                 process.executableURL = URL(fileURLWithPath: command)
                 process.currentDirectoryURL = URL(fileURLWithPath: currentDirectory)
@@ -85,18 +87,22 @@ enum Exec {
                 process.currentDirectoryPath = currentDirectory
                 process.launch()
             }
-#else
+#elseif !os(iOS) && !os(xrOS)
             process.executableURL = URL(fileURLWithPath: command)
             process.currentDirectoryURL = URL(fileURLWithPath: currentDirectory)
             try process.run()
-#endif
+#endif /* !os(iOS) && !os(xrOS) */
         } catch {
             return Results(terminationStatus: -1, data: Data())
         }
 
+#if !os(iOS) && !os(xrOS)
         let file = pipe.fileHandleForReading
         let data = file.readDataToEndOfFile()
         process.waitUntilExit()
         return Results(terminationStatus: process.terminationStatus, data: data)
+#else /* !os(iOS) && !os(xrOS) */
+        return Results(terminationStatus: -1, data: Data())
+#endif /* os(iOS) && os(xrOS) */
     }
 }

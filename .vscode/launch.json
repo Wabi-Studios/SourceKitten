@@ -1,0 +1,28 @@
+{
+  "configurations": [
+    {
+      "type": "lldb",
+      "request": "launch",
+      "sourceLanguages": [
+        "swift"
+      ],
+      "name": "Debug sourcekitten",
+      "program": "/tmp/build/debug/sourcekitten",
+      "args": [],
+      "cwd": "${workspaceFolder:SourceKitten}",
+      "preLaunchTask": "swift: Build Debug sourcekitten"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "sourceLanguages": [
+        "swift"
+      ],
+      "name": "Release sourcekitten",
+      "program": "/tmp/build/release/sourcekitten",
+      "args": [],
+      "cwd": "${workspaceFolder:SourceKitten}",
+      "preLaunchTask": "swift: Build Release sourcekitten"
+    }
+  ]
+}
